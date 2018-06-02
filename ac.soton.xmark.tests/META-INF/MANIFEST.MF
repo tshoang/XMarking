@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: ac.soton.xmark.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: ac.soton.xmark.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: ac.soton.xmark.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: ac.soton.xmark,
+ ac.soton.xmark.emf,
+ org.junit;bundle-version="4.12.0",
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: ac.soton.xmark.tests;x-internal=true
+
