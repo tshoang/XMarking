@@ -15,7 +15,20 @@
       <!-- @generated marking -->
       <factory
             uri="http://xmarking.soton.ac/models/marking/2018"
-            class="ac.soton.xmarking.marking.provider.MarkingItemProviderAdapterFactory"
+            class="ac.soton.xmark.marking.provider.MarkingItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated markingcore -->
+      <factory
+            uri="http://xmarking.soton.ac/models/markingcore/2018"
+            class="ac.soton.xmark.markingcore.provider.MarkingcoreItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

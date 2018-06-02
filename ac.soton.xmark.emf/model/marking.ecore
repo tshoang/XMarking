@@ -2,33 +2,33 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="marking" nsURI="http://xmarking.soton.ac/models/marking/2018"
     nsPrefix="marking">
-  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral=""/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Exercise">
+  <eClassifiers xsi:type="ecore:EClass" name="Exercise" eSuperTypes="markingcore.ecore#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="module" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
         eType="#//Part" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="recipients" upperBound="-1"
-        eType="#//Recipient" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="students" upperBound="-1"
+        eType="#//Student" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
+        eType="#//Group" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="marks" upperBound="-1"
+        eType="#//Mark" containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Part" abstract="true" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Part" abstract="true" eSuperTypes="markingcore.ecore#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="comments" upperBound="-1"
         eType="#//Comment" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="grade" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Section" eSuperTypes="#//Part">
     <eStructuralFeatures xsi:type="ecore:EReference" name="subsections" lowerBound="1"
         upperBound="-1" eType="#//Part" containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Question" eSuperTypes="#//Part"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Comment" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Comment" eSuperTypes="markingcore.ecore#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Recipient" abstract="true" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="grades" upperBound="-1"
-        eType="#//PartGrade" containment="true" resolveProxies="false"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Recipient" eSuperTypes="markingcore.ecore#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Student" eSuperTypes="#//Recipient">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="firstname" unique="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -37,7 +37,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Group" eSuperTypes="#//Recipient">
     <eStructuralFeatures xsi:type="ecore:EReference" name="students" lowerBound="1"
-        upperBound="-1" eType="#//Student" containment="true" resolveProxies="false"/>
+        upperBound="-1" eType="#//Student"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartGrade" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="part" lowerBound="1" eType="#//Part"/>
@@ -47,7 +47,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="SectionGrade" eSuperTypes="#//PartGrade">
     <eStructuralFeatures xsi:type="ecore:EReference" name="subgrades" lowerBound="1"
         upperBound="-1" eType="#//PartGrade" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QuestionGrade" eSuperTypes="#//PartGrade">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mark" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="QuestionGrade" eSuperTypes="#//PartGrade"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Mark">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="recipient" lowerBound="1"
+        eType="#//Recipient"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="grade" lowerBound="1" upperBound="-1"
+        eType="#//PartGrade" containment="true" resolveProxies="false"/>
+  </eClassifiers>
 </ecore:EPackage>

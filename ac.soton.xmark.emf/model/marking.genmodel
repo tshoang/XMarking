@@ -3,20 +3,21 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2018 University of Southampton.&#xA;&#xA;All rights reserved. This program and the accompanying materials  are made&#xA;available under the terms of the Eclipse Public License v1.0 which accompanies&#xA;this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html"
     modelDirectory="/ac.soton.xmark.emf/src" modelPluginID="ac.soton.xmark.emf" modelName="Marking"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="8.0" operationReflection="true" importOrganizing="true">
+    complianceLevel="8.0" usedGenPackages="markingcore.genmodel#//markingcore" operationReflection="true"
+    importOrganizing="true">
   <foreignModel>marking.ecore</foreignModel>
-  <genPackages prefix="Marking" basePackage="ac.soton.xmarking" disposableProviderFactory="true"
-      extensibleProviderFactory="true" childCreationExtenders="true" fileExtensions="mrk"
-      ecorePackage="marking.ecore#/">
-    <genClasses image="false" ecoreClass="marking.ecore#//NamedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marking.ecore#//NamedElement/name"/>
-    </genClasses>
+  <genPackages prefix="Marking" basePackage="ac.soton.xmark" disposableProviderFactory="true"
+      extensibleProviderFactory="true" childCreationExtenders="true" ecorePackage="marking.ecore#/">
     <genClasses ecoreClass="marking.ecore#//Exercise">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marking.ecore#//Exercise/module"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//Exercise/parts"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//Exercise/recipients"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//Exercise/students"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//Exercise/groups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//Exercise/marks"/>
     </genClasses>
     <genClasses image="false" ecoreClass="marking.ecore#//Part">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//Part/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marking.ecore#//Part/grade"/>
     </genClasses>
     <genClasses ecoreClass="marking.ecore#//Section">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//Section/subsections"/>
@@ -25,15 +26,13 @@
     <genClasses ecoreClass="marking.ecore#//Comment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marking.ecore#//Comment/comment"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="marking.ecore#//Recipient">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//Recipient/grades"/>
-    </genClasses>
+    <genClasses ecoreClass="marking.ecore#//Recipient"/>
     <genClasses ecoreClass="marking.ecore#//Student">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marking.ecore#//Student/firstname"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marking.ecore#//Student/lastname"/>
     </genClasses>
     <genClasses ecoreClass="marking.ecore#//Group">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//Group/students"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference marking.ecore#//Group/students"/>
     </genClasses>
     <genClasses image="false" ecoreClass="marking.ecore#//PartGrade">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference marking.ecore#//PartGrade/part"/>
@@ -41,8 +40,13 @@
     </genClasses>
     <genClasses ecoreClass="marking.ecore#//SectionGrade">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//SectionGrade/subgrades"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marking.ecore#//SectionGrade/mark"/>
     </genClasses>
-    <genClasses ecoreClass="marking.ecore#//QuestionGrade"/>
+    <genClasses ecoreClass="marking.ecore#//QuestionGrade">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marking.ecore#//QuestionGrade/mark"/>
+    </genClasses>
+    <genClasses ecoreClass="marking.ecore#//Mark">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference marking.ecore#//Mark/recipient"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marking.ecore#//Mark/grade"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

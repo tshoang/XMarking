@@ -15,8 +15,16 @@
       <!-- @generated marking -->
       <package
             uri="http://xmarking.soton.ac/models/marking/2018"
-            class="ac.soton.xmarking.marking.MarkingPackage"
+            class="ac.soton.xmark.marking.MarkingPackage"
             genModel="model/marking.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated markingcore -->
+      <package
+            uri="http://xmarking.soton.ac/models/markingcore/2018"
+            class="ac.soton.xmark.markingcore.MarkingcorePackage"
+            genModel="model/markingcore.genmodel"/>
    </extension>
 
 </plugin>
