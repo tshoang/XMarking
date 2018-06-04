@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2018 University of Southampton.&#xA;&#xA;All rights reserved. This program and the accompanying materials  are made&#xA;available under the terms of the Eclipse Public License v1.0 which accompanies&#xA;this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/ac.soton.xmark.emf/src" modelPluginID="ac.soton.xmark.emf" modelName="Feedback"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" usedGenPackages="markingcore.genmodel#//markingcore" operationReflection="true"
+    importOrganizing="true">
+  <foreignModel>feedback.ecore</foreignModel>
+  <genPackages prefix="Feedback" basePackage="ac.soton.xmark" disposableProviderFactory="true"
+      extensibleProviderFactory="true" childCreationExtenders="true" ecorePackage="feedback.ecore#/">
+    <genClasses ecoreClass="feedback.ecore#//ExerciseFeedback">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference feedback.ecore#//ExerciseFeedback/feedbacks"/>
+    </genClasses>
+    <genClasses ecoreClass="feedback.ecore#//Feedback">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute feedback.ecore#//Feedback/recipients"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute feedback.ecore#//Feedback/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute feedback.ecore#//Feedback/feedback"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

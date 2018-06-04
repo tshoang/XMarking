@@ -12,7 +12,10 @@ Export-Package: ac.soton.xmark.marking,
  ac.soton.xmark.marking.util,
  ac.soton.xmark.markingcore,
  ac.soton.xmark.markingcore.impl,
- ac.soton.xmark.markingcore.util
+ ac.soton.xmark.markingcore.util,
+ ac.soton.xmark.feedback,
+ ac.soton.xmark.feedback.impl,
+ ac.soton.xmark.feedback.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  ac.soton.xmark.emf;visibility:=reexport

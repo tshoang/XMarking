@@ -8,7 +8,8 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ac.soton.xmark.marking.tests,
- ac.soton.xmark.markingcore.tests
+ ac.soton.xmark.markingcore.tests,
+ ac.soton.xmark.feedback.tests
 Require-Bundle: org.eclipse.core.runtime,
  ac.soton.xmark.emf;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
