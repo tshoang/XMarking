@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: ac.soton.xmark.feedback
+Bundle-ManifestVersion: 2
+Bundle-Name: ac.soton.xmark.feedback
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: ac.soton.xmark.feedback; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: ac.soton.xmark.emf,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib;bundle-version="2.14.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: ac.soton.xmark.feedback.validation,
+ ac.soton.xmark.feedback.services,
+ ac.soton.xmark.feedback.serializer,
+ ac.soton.xmark.feedback.parser.antlr.internal,
+ ac.soton.xmark.feedback,
+ ac.soton.xmark.feedback.scoping,
+ ac.soton.xmark.feedback.formatting2,
+ ac.soton.xmark.feedback.generator,
+ ac.soton.xmark.feedback.parser.antlr
+Import-Package: org.apache.log4j
