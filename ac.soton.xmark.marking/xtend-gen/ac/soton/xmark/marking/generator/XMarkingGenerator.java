@@ -3,7 +3,20 @@
  */
 package ac.soton.xmark.marking.generator;
 
+import ac.soton.xmark.marking.Comment;
+import ac.soton.xmark.marking.Exercise;
+import ac.soton.xmark.marking.Group;
+import ac.soton.xmark.marking.Mark;
+import ac.soton.xmark.marking.Part;
+import ac.soton.xmark.marking.PartGrade;
+import ac.soton.xmark.marking.QuestionGrade;
+import ac.soton.xmark.marking.Recipient;
+import ac.soton.xmark.marking.SectionGrade;
+import ac.soton.xmark.marking.Student;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
@@ -17,5 +30,217 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class XMarkingGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    EObject _get = resource.getContents().get(0);
+    Exercise exercise = ((Exercise) _get);
+    String _name = exercise.getName();
+    String _plus = (_name + ".fbk");
+    fsa.generateFile(_plus, this.getContents(exercise));
+  }
+  
+  private CharSequence getContents(final Exercise exercise) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Feedback ");
+    String _name = exercise.getName();
+    _builder.append(_name);
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Mark> _marks = exercise.getMarks();
+      for(final Mark mark : _marks) {
+        _builder.newLine();
+        String _name_1 = mark.getRecipient().getName();
+        _builder.append(_name_1);
+        _builder.append(" {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("recipients ");
+        CharSequence _recipients = this.recipients(mark, exercise);
+        _builder.append(_recipients, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("title ");
+        CharSequence _title = this.title(exercise);
+        _builder.append(_title, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("feedback ");
+        CharSequence _feedback = this.feedback(mark, exercise);
+        _builder.append(_feedback, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
+    _builder.append("end");
+    return _builder;
+  }
+  
+  private CharSequence recipients(final Mark mark, final Exercise exercise) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\"");
+    final Recipient recipient = mark.getRecipient();
+    {
+      if ((recipient instanceof Group)) {
+        final Group group = ((Group) recipient);
+        {
+          EList<Student> _students = group.getStudents();
+          for(final Student student : _students) {
+            String _firstname = student.getFirstname();
+            _builder.append(_firstname);
+            _builder.append(" ");
+            String _lastname = student.getLastname();
+            _builder.append(_lastname);
+            _builder.append(" <");
+            String _name = student.getName();
+            _builder.append(_name);
+            _builder.append("@ecs.soton.ac.uk>, ");
+          }
+        }
+      } else {
+        final Student student_1 = ((Student) recipient);
+        String _firstname_1 = student_1.getFirstname();
+        _builder.append(_firstname_1);
+        _builder.append(" ");
+        String _lastname_1 = student_1.getLastname();
+        _builder.append(_lastname_1);
+        _builder.append(" <");
+        String _name_1 = student_1.getName();
+        _builder.append(_name_1);
+        _builder.append("@ecs.soton.ac.uk>");
+      }
+    }
+    _builder.append("\"");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  private CharSequence title(final Exercise exercise) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\"");
+    String _module = exercise.getModule();
+    _builder.append(_module);
+    _builder.append(" ");
+    String _name = exercise.getName();
+    _builder.append(_name);
+    _builder.append(" Feedback\"");
+    return _builder;
+  }
+  
+  private CharSequence feedback(final Mark mark, final Exercise exercise) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\"");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("Dear ");
+    CharSequence _recipients = this.recipients(mark);
+    _builder.append(_recipients, " ");
+    _builder.newLineIfNotEmpty();
+    _builder.append(" ");
+    _builder.append("Please find the the feedback for your ");
+    String _name = exercise.getName();
+    _builder.append(_name, " ");
+    _builder.append(" below");
+    _builder.newLineIfNotEmpty();
+    _builder.append(" ");
+    _builder.append("--");
+    _builder.newLine();
+    {
+      EList<PartGrade> _grade = mark.getGrade();
+      for(final PartGrade grade : _grade) {
+        String _feedback = this.feedback(grade);
+        _builder.append(_feedback);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append(" ");
+    _builder.append("--");
+    _builder.newLine();
+    _builder.append("Best regards,");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\"");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private CharSequence recipients(final Mark mark) {
+    StringConcatenation _builder = new StringConcatenation();
+    final Recipient recipient = mark.getRecipient();
+    {
+      if ((recipient instanceof Group)) {
+        final Group group = ((Group) recipient);
+        {
+          EList<Student> _students = group.getStudents();
+          for(final Student student : _students) {
+            String _firstname = student.getFirstname();
+            _builder.append(_firstname);
+            _builder.append(", ");
+          }
+        }
+      } else {
+        final Student student_1 = ((Student) recipient);
+        String _firstname_1 = student_1.getFirstname();
+        _builder.append(_firstname_1);
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  private String feedback(final PartGrade grade) {
+    StringConcatenation _builder = new StringConcatenation();
+    final Part part = grade.getPart();
+    {
+      if ((grade instanceof QuestionGrade)) {
+        final QuestionGrade questionGrade = ((QuestionGrade) grade);
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        String _name = part.getName();
+        _builder.append(_name, "\t");
+        _builder.append(" (");
+        int _mark = questionGrade.getMark();
+        _builder.append(_mark, "\t");
+        _builder.append("/");
+        int _grade = part.getGrade();
+        _builder.append(_grade, "\t");
+        _builder.append(")");
+        _builder.newLineIfNotEmpty();
+        {
+          EList<Comment> _comments = ((QuestionGrade)grade).getComments();
+          for(final Comment comment : _comments) {
+            _builder.append("\t\t");
+            _builder.append("* ");
+            String _comment = comment.getComment();
+            _builder.append(_comment, "\t\t");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      } else {
+        _builder.append("\t");
+        final SectionGrade sectionGrade = ((SectionGrade) grade);
+        _builder.newLineIfNotEmpty();
+        String _name_1 = part.getName();
+        _builder.append(_name_1);
+        _builder.newLineIfNotEmpty();
+        {
+          EList<Comment> _comments_1 = grade.getComments();
+          for(final Comment comment_1 : _comments_1) {
+            _builder.append("\t");
+            _builder.append("* ");
+            String _comment_1 = comment_1.getComment();
+            _builder.append(_comment_1, "\t");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        {
+          EList<PartGrade> _subgrades = sectionGrade.getSubgrades();
+          for(final PartGrade subGrade : _subgrades) {
+            String _feedback = this.feedback(subGrade);
+            _builder.append(_feedback);
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    return _builder.toString();
   }
 }
