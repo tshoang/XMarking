@@ -4,6 +4,7 @@
 package ac.soton.xmark.feedback.formatting2
 
 import ac.soton.xmark.feedback.ExerciseFeedback
+import ac.soton.xmark.feedback.Feedback
 import ac.soton.xmark.feedback.services.FeedbackGrammarAccess
 import com.google.inject.Inject
 import org.eclipse.xtext.formatting2.AbstractFormatter2
@@ -15,10 +16,26 @@ class FeedbackFormatter extends AbstractFormatter2 {
 
 	def dispatch void format(ExerciseFeedback exerciseFeedback, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		for (feedback : exerciseFeedback.feedbacks) {
-			feedback.format
+		
+		val feedbacks = exerciseFeedback.feedbacks
+		for (feedback : feedbacks) {
+			feedback.format.prepend[newLines=2]
+			feedback.interior[indent]
 		}
+		exerciseFeedback.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
+		exerciseFeedback.regionFor.keyword("end").prepend[newLine];
+		
 	}
 	
-	// TODO: implement for 
+	def dispatch void format(Feedback feedback, extension IFormattableDocument document) {
+		// add new lines before and after some machine keywords
+		feedback.regionFor.keyword("recipients").prepend[newLine];
+		feedback.regionFor.keyword("title").prepend[newLine];
+		feedback.regionFor.keyword("feedback").prepend[newLine];
+		feedback.regionFor.keyword("}").prepend[newLine];
+		// add new line after multi line comment
+		feedback.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
+		
+
+	}
 }
