@@ -85,8 +85,8 @@ public class XMarkingParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXGroupAccess().getStudentsAssignment_2(), "rule__XGroup__StudentsAssignment_2");
 			builder.put(grammarAccess.getXGroupAccess().getStudentsAssignment_3(), "rule__XGroup__StudentsAssignment_3");
 			builder.put(grammarAccess.getXMarkAccess().getRecipientAssignment_1(), "rule__XMark__RecipientAssignment_1");
+			builder.put(grammarAccess.getXMarkAccess().getGradeAssignment_3(), "rule__XMark__GradeAssignment_3");
 			builder.put(grammarAccess.getXMarkAccess().getGradeAssignment_4(), "rule__XMark__GradeAssignment_4");
-			builder.put(grammarAccess.getXMarkAccess().getGradeAssignment_5(), "rule__XMark__GradeAssignment_5");
 			builder.put(grammarAccess.getSectionGradeAccess().getPartAssignment_0(), "rule__SectionGrade__PartAssignment_0");
 			builder.put(grammarAccess.getSectionGradeAccess().getCommentsAssignment_1_1(), "rule__SectionGrade__CommentsAssignment_1_1");
 			builder.put(grammarAccess.getSectionGradeAccess().getCommentsAssignment_1_2(), "rule__SectionGrade__CommentsAssignment_1_2");

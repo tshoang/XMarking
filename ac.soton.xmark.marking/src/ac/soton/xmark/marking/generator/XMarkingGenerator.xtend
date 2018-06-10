@@ -27,7 +27,7 @@ class XMarkingGenerator extends AbstractGenerator {
 		
 		fsa.generateFile(exercise.name + ".fbk", exercise.feedback)
 		
-		fsa.generateFile(exercise.name + ".grd", exercise.grade)
+		fsa.generateFile(exercise.name + ".csv", exercise.grade)
 	}
 		
 	def private feedback(Exercise exercise) 

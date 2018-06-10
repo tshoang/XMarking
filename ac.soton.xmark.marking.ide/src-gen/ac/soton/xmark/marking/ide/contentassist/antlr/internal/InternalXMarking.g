@@ -2000,9 +2000,9 @@ rule__XMark__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXMarkAccess().getColonKeyword_2()); }
-	':'
-	{ after(grammarAccess.getXMarkAccess().getColonKeyword_2()); }
+	{ before(grammarAccess.getXMarkAccess().getBeginKeyword_2()); }
+	'begin'
+	{ after(grammarAccess.getXMarkAccess().getBeginKeyword_2()); }
 )
 ;
 finally {
@@ -2027,9 +2027,9 @@ rule__XMark__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXMarkAccess().getBeginKeyword_3()); }
-	'begin'
-	{ after(grammarAccess.getXMarkAccess().getBeginKeyword_3()); }
+	{ before(grammarAccess.getXMarkAccess().getGradeAssignment_3()); }
+	(rule__XMark__GradeAssignment_3)
+	{ after(grammarAccess.getXMarkAccess().getGradeAssignment_3()); }
 )
 ;
 finally {
@@ -2055,7 +2055,7 @@ rule__XMark__Group__4__Impl
 :
 (
 	{ before(grammarAccess.getXMarkAccess().getGradeAssignment_4()); }
-	(rule__XMark__GradeAssignment_4)
+	(rule__XMark__GradeAssignment_4)*
 	{ after(grammarAccess.getXMarkAccess().getGradeAssignment_4()); }
 )
 ;
@@ -2069,7 +2069,6 @@ rule__XMark__Group__5
 	}
 :
 	rule__XMark__Group__5__Impl
-	rule__XMark__Group__6
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2081,35 +2080,9 @@ rule__XMark__Group__5__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXMarkAccess().getGradeAssignment_5()); }
-	(rule__XMark__GradeAssignment_5)*
-	{ after(grammarAccess.getXMarkAccess().getGradeAssignment_5()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__XMark__Group__6
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__XMark__Group__6__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__XMark__Group__6__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getXMarkAccess().getEndKeyword_6()); }
+	{ before(grammarAccess.getXMarkAccess().getEndKeyword_5()); }
 	'end'
-	{ after(grammarAccess.getXMarkAccess().getEndKeyword_6()); }
+	{ after(grammarAccess.getXMarkAccess().getEndKeyword_5()); }
 )
 ;
 finally {
@@ -3116,6 +3089,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__XMark__GradeAssignment_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_3_0()); }
+		ruleXPartGrade
+		{ after(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_3_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__XMark__GradeAssignment_4
 	@init {
 		int stackSize = keepStackSize();
@@ -3125,21 +3113,6 @@ rule__XMark__GradeAssignment_4
 		{ before(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_4_0()); }
 		ruleXPartGrade
 		{ after(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_4_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__XMark__GradeAssignment_5
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_5_0()); }
-		ruleXPartGrade
-		{ after(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_5_0()); }
 	)
 ;
 finally {

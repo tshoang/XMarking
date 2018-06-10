@@ -51,7 +51,7 @@ XGroup returns Group:
 
 XMark returns Mark:
 	{Mark}
-	recipient = [Recipient] ':'
+	recipient = [Recipient]
 	'begin' grade += XPartGrade (grade += XPartGrade)* 'end'
 ;
 

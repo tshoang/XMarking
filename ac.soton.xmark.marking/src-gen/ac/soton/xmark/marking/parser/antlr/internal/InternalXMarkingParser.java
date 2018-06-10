@@ -2338,28 +2338,27 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXMark"
-    // InternalXMarking.g:920:1: ruleXMark returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= ':' otherlv_3= 'begin' ( (lv_grade_4_0= ruleXPartGrade ) ) ( (lv_grade_5_0= ruleXPartGrade ) )* otherlv_6= 'end' ) ;
+    // InternalXMarking.g:920:1: ruleXMark returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= 'begin' ( (lv_grade_3_0= ruleXPartGrade ) ) ( (lv_grade_4_0= ruleXPartGrade ) )* otherlv_5= 'end' ) ;
     public final EObject ruleXMark() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token otherlv_2=null;
-        Token otherlv_3=null;
-        Token otherlv_6=null;
-        EObject lv_grade_4_0 = null;
+        Token otherlv_5=null;
+        EObject lv_grade_3_0 = null;
 
-        EObject lv_grade_5_0 = null;
+        EObject lv_grade_4_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalXMarking.g:926:2: ( ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= ':' otherlv_3= 'begin' ( (lv_grade_4_0= ruleXPartGrade ) ) ( (lv_grade_5_0= ruleXPartGrade ) )* otherlv_6= 'end' ) )
-            // InternalXMarking.g:927:2: ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= ':' otherlv_3= 'begin' ( (lv_grade_4_0= ruleXPartGrade ) ) ( (lv_grade_5_0= ruleXPartGrade ) )* otherlv_6= 'end' )
+            // InternalXMarking.g:926:2: ( ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= 'begin' ( (lv_grade_3_0= ruleXPartGrade ) ) ( (lv_grade_4_0= ruleXPartGrade ) )* otherlv_5= 'end' ) )
+            // InternalXMarking.g:927:2: ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= 'begin' ( (lv_grade_3_0= ruleXPartGrade ) ) ( (lv_grade_4_0= ruleXPartGrade ) )* otherlv_5= 'end' )
             {
-            // InternalXMarking.g:927:2: ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= ':' otherlv_3= 'begin' ( (lv_grade_4_0= ruleXPartGrade ) ) ( (lv_grade_5_0= ruleXPartGrade ) )* otherlv_6= 'end' )
-            // InternalXMarking.g:928:3: () ( (otherlv_1= RULE_ID ) ) otherlv_2= ':' otherlv_3= 'begin' ( (lv_grade_4_0= ruleXPartGrade ) ) ( (lv_grade_5_0= ruleXPartGrade ) )* otherlv_6= 'end'
+            // InternalXMarking.g:927:2: ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= 'begin' ( (lv_grade_3_0= ruleXPartGrade ) ) ( (lv_grade_4_0= ruleXPartGrade ) )* otherlv_5= 'end' )
+            // InternalXMarking.g:928:3: () ( (otherlv_1= RULE_ID ) ) otherlv_2= 'begin' ( (lv_grade_3_0= ruleXPartGrade ) ) ( (lv_grade_4_0= ruleXPartGrade ) )* otherlv_5= 'end'
             {
             // InternalXMarking.g:928:3: ()
             // InternalXMarking.g:929:4: 
@@ -2383,7 +2382,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
             						current = createModelElement(grammarAccess.getXMarkRule());
             					}
             				
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_12); 
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_20); 
 
             					newLeafNode(otherlv_1, grammarAccess.getXMarkAccess().getRecipientRecipientCrossReference_1_0());
             				
@@ -2393,25 +2392,21 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,23,FOLLOW_20); 
+            otherlv_2=(Token)match(input,31,FOLLOW_3); 
 
-            			newLeafNode(otherlv_2, grammarAccess.getXMarkAccess().getColonKeyword_2());
+            			newLeafNode(otherlv_2, grammarAccess.getXMarkAccess().getBeginKeyword_2());
             		
-            otherlv_3=(Token)match(input,31,FOLLOW_3); 
-
-            			newLeafNode(otherlv_3, grammarAccess.getXMarkAccess().getBeginKeyword_3());
-            		
-            // InternalXMarking.g:956:3: ( (lv_grade_4_0= ruleXPartGrade ) )
-            // InternalXMarking.g:957:4: (lv_grade_4_0= ruleXPartGrade )
+            // InternalXMarking.g:952:3: ( (lv_grade_3_0= ruleXPartGrade ) )
+            // InternalXMarking.g:953:4: (lv_grade_3_0= ruleXPartGrade )
             {
-            // InternalXMarking.g:957:4: (lv_grade_4_0= ruleXPartGrade )
-            // InternalXMarking.g:958:5: lv_grade_4_0= ruleXPartGrade
+            // InternalXMarking.g:953:4: (lv_grade_3_0= ruleXPartGrade )
+            // InternalXMarking.g:954:5: lv_grade_3_0= ruleXPartGrade
             {
 
-            					newCompositeNode(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_4_0());
+            					newCompositeNode(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_3_0());
             				
             pushFollow(FOLLOW_21);
-            lv_grade_4_0=ruleXPartGrade();
+            lv_grade_3_0=ruleXPartGrade();
 
             state._fsp--;
 
@@ -2422,7 +2417,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
             					add(
             						current,
             						"grade",
-            						lv_grade_4_0,
+            						lv_grade_3_0,
             						"ac.soton.xmark.marking.XMarking.XPartGrade");
             					afterParserOrEnumRuleCall();
             				
@@ -2432,7 +2427,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXMarking.g:975:3: ( (lv_grade_5_0= ruleXPartGrade ) )*
+            // InternalXMarking.g:971:3: ( (lv_grade_4_0= ruleXPartGrade ) )*
             loop20:
             do {
                 int alt20=2;
@@ -2445,16 +2440,16 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
                 switch (alt20) {
             	case 1 :
-            	    // InternalXMarking.g:976:4: (lv_grade_5_0= ruleXPartGrade )
+            	    // InternalXMarking.g:972:4: (lv_grade_4_0= ruleXPartGrade )
             	    {
-            	    // InternalXMarking.g:976:4: (lv_grade_5_0= ruleXPartGrade )
-            	    // InternalXMarking.g:977:5: lv_grade_5_0= ruleXPartGrade
+            	    // InternalXMarking.g:972:4: (lv_grade_4_0= ruleXPartGrade )
+            	    // InternalXMarking.g:973:5: lv_grade_4_0= ruleXPartGrade
             	    {
 
-            	    					newCompositeNode(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_5_0());
+            	    					newCompositeNode(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_4_0());
             	    				
             	    pushFollow(FOLLOW_21);
-            	    lv_grade_5_0=ruleXPartGrade();
+            	    lv_grade_4_0=ruleXPartGrade();
 
             	    state._fsp--;
 
@@ -2465,7 +2460,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
             	    					add(
             	    						current,
             	    						"grade",
-            	    						lv_grade_5_0,
+            	    						lv_grade_4_0,
             	    						"ac.soton.xmark.marking.XMarking.XPartGrade");
             	    					afterParserOrEnumRuleCall();
             	    				
@@ -2481,9 +2476,9 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_6=(Token)match(input,22,FOLLOW_2); 
+            otherlv_5=(Token)match(input,22,FOLLOW_2); 
 
-            			newLeafNode(otherlv_6, grammarAccess.getXMarkAccess().getEndKeyword_6());
+            			newLeafNode(otherlv_5, grammarAccess.getXMarkAccess().getEndKeyword_5());
             		
 
             }
@@ -2508,7 +2503,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSectionGrade"
-    // InternalXMarking.g:1002:1: entryRuleSectionGrade returns [EObject current=null] : iv_ruleSectionGrade= ruleSectionGrade EOF ;
+    // InternalXMarking.g:998:1: entryRuleSectionGrade returns [EObject current=null] : iv_ruleSectionGrade= ruleSectionGrade EOF ;
     public final EObject entryRuleSectionGrade() throws RecognitionException {
         EObject current = null;
 
@@ -2516,8 +2511,8 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalXMarking.g:1002:53: (iv_ruleSectionGrade= ruleSectionGrade EOF )
-            // InternalXMarking.g:1003:2: iv_ruleSectionGrade= ruleSectionGrade EOF
+            // InternalXMarking.g:998:53: (iv_ruleSectionGrade= ruleSectionGrade EOF )
+            // InternalXMarking.g:999:2: iv_ruleSectionGrade= ruleSectionGrade EOF
             {
              newCompositeNode(grammarAccess.getSectionGradeRule()); 
             pushFollow(FOLLOW_1);
@@ -2544,7 +2539,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSectionGrade"
-    // InternalXMarking.g:1009:1: ruleSectionGrade returns [EObject current=null] : ( ( ( ruleEString ) ) (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )? otherlv_5= '{' ( (lv_subgrades_6_0= ruleXPartGrade ) ) ( (lv_subgrades_7_0= ruleXPartGrade ) )* otherlv_8= '}' ) ;
+    // InternalXMarking.g:1005:1: ruleSectionGrade returns [EObject current=null] : ( ( ( ruleEString ) ) (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )? otherlv_5= '{' ( (lv_subgrades_6_0= ruleXPartGrade ) ) ( (lv_subgrades_7_0= ruleXPartGrade ) )* otherlv_8= '}' ) ;
     public final EObject ruleSectionGrade() throws RecognitionException {
         EObject current = null;
 
@@ -2561,17 +2556,17 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalXMarking.g:1015:2: ( ( ( ( ruleEString ) ) (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )? otherlv_5= '{' ( (lv_subgrades_6_0= ruleXPartGrade ) ) ( (lv_subgrades_7_0= ruleXPartGrade ) )* otherlv_8= '}' ) )
-            // InternalXMarking.g:1016:2: ( ( ( ruleEString ) ) (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )? otherlv_5= '{' ( (lv_subgrades_6_0= ruleXPartGrade ) ) ( (lv_subgrades_7_0= ruleXPartGrade ) )* otherlv_8= '}' )
+            // InternalXMarking.g:1011:2: ( ( ( ( ruleEString ) ) (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )? otherlv_5= '{' ( (lv_subgrades_6_0= ruleXPartGrade ) ) ( (lv_subgrades_7_0= ruleXPartGrade ) )* otherlv_8= '}' ) )
+            // InternalXMarking.g:1012:2: ( ( ( ruleEString ) ) (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )? otherlv_5= '{' ( (lv_subgrades_6_0= ruleXPartGrade ) ) ( (lv_subgrades_7_0= ruleXPartGrade ) )* otherlv_8= '}' )
             {
-            // InternalXMarking.g:1016:2: ( ( ( ruleEString ) ) (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )? otherlv_5= '{' ( (lv_subgrades_6_0= ruleXPartGrade ) ) ( (lv_subgrades_7_0= ruleXPartGrade ) )* otherlv_8= '}' )
-            // InternalXMarking.g:1017:3: ( ( ruleEString ) ) (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )? otherlv_5= '{' ( (lv_subgrades_6_0= ruleXPartGrade ) ) ( (lv_subgrades_7_0= ruleXPartGrade ) )* otherlv_8= '}'
+            // InternalXMarking.g:1012:2: ( ( ( ruleEString ) ) (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )? otherlv_5= '{' ( (lv_subgrades_6_0= ruleXPartGrade ) ) ( (lv_subgrades_7_0= ruleXPartGrade ) )* otherlv_8= '}' )
+            // InternalXMarking.g:1013:3: ( ( ruleEString ) ) (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )? otherlv_5= '{' ( (lv_subgrades_6_0= ruleXPartGrade ) ) ( (lv_subgrades_7_0= ruleXPartGrade ) )* otherlv_8= '}'
             {
-            // InternalXMarking.g:1017:3: ( ( ruleEString ) )
-            // InternalXMarking.g:1018:4: ( ruleEString )
+            // InternalXMarking.g:1013:3: ( ( ruleEString ) )
+            // InternalXMarking.g:1014:4: ( ruleEString )
             {
-            // InternalXMarking.g:1018:4: ( ruleEString )
-            // InternalXMarking.g:1019:5: ruleEString
+            // InternalXMarking.g:1014:4: ( ruleEString )
+            // InternalXMarking.g:1015:5: ruleEString
             {
 
             					if (current==null) {
@@ -2595,7 +2590,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXMarking.g:1033:3: (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )?
+            // InternalXMarking.g:1029:3: (otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')' )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -2604,17 +2599,17 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
             }
             switch (alt22) {
                 case 1 :
-                    // InternalXMarking.g:1034:4: otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')'
+                    // InternalXMarking.g:1030:4: otherlv_1= '(' ( ( ruleEString ) ) ( ( ruleEString ) )* otherlv_4= ')'
                     {
                     otherlv_1=(Token)match(input,17,FOLLOW_3); 
 
                     				newLeafNode(otherlv_1, grammarAccess.getSectionGradeAccess().getLeftParenthesisKeyword_1_0());
                     			
-                    // InternalXMarking.g:1038:4: ( ( ruleEString ) )
-                    // InternalXMarking.g:1039:5: ( ruleEString )
+                    // InternalXMarking.g:1034:4: ( ( ruleEString ) )
+                    // InternalXMarking.g:1035:5: ( ruleEString )
                     {
-                    // InternalXMarking.g:1039:5: ( ruleEString )
-                    // InternalXMarking.g:1040:6: ruleEString
+                    // InternalXMarking.g:1035:5: ( ruleEString )
+                    // InternalXMarking.g:1036:6: ruleEString
                     {
 
                     						if (current==null) {
@@ -2638,7 +2633,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalXMarking.g:1054:4: ( ( ruleEString ) )*
+                    // InternalXMarking.g:1050:4: ( ( ruleEString ) )*
                     loop21:
                     do {
                         int alt21=2;
@@ -2651,10 +2646,10 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
                         switch (alt21) {
                     	case 1 :
-                    	    // InternalXMarking.g:1055:5: ( ruleEString )
+                    	    // InternalXMarking.g:1051:5: ( ruleEString )
                     	    {
-                    	    // InternalXMarking.g:1055:5: ( ruleEString )
-                    	    // InternalXMarking.g:1056:6: ruleEString
+                    	    // InternalXMarking.g:1051:5: ( ruleEString )
+                    	    // InternalXMarking.g:1052:6: ruleEString
                     	    {
 
                     	    						if (current==null) {
@@ -2698,11 +2693,11 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_5, grammarAccess.getSectionGradeAccess().getLeftCurlyBracketKeyword_2());
             		
-            // InternalXMarking.g:1079:3: ( (lv_subgrades_6_0= ruleXPartGrade ) )
-            // InternalXMarking.g:1080:4: (lv_subgrades_6_0= ruleXPartGrade )
+            // InternalXMarking.g:1075:3: ( (lv_subgrades_6_0= ruleXPartGrade ) )
+            // InternalXMarking.g:1076:4: (lv_subgrades_6_0= ruleXPartGrade )
             {
-            // InternalXMarking.g:1080:4: (lv_subgrades_6_0= ruleXPartGrade )
-            // InternalXMarking.g:1081:5: lv_subgrades_6_0= ruleXPartGrade
+            // InternalXMarking.g:1076:4: (lv_subgrades_6_0= ruleXPartGrade )
+            // InternalXMarking.g:1077:5: lv_subgrades_6_0= ruleXPartGrade
             {
 
             					newCompositeNode(grammarAccess.getSectionGradeAccess().getSubgradesXPartGradeParserRuleCall_3_0());
@@ -2729,7 +2724,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXMarking.g:1098:3: ( (lv_subgrades_7_0= ruleXPartGrade ) )*
+            // InternalXMarking.g:1094:3: ( (lv_subgrades_7_0= ruleXPartGrade ) )*
             loop23:
             do {
                 int alt23=2;
@@ -2742,10 +2737,10 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
                 switch (alt23) {
             	case 1 :
-            	    // InternalXMarking.g:1099:4: (lv_subgrades_7_0= ruleXPartGrade )
+            	    // InternalXMarking.g:1095:4: (lv_subgrades_7_0= ruleXPartGrade )
             	    {
-            	    // InternalXMarking.g:1099:4: (lv_subgrades_7_0= ruleXPartGrade )
-            	    // InternalXMarking.g:1100:5: lv_subgrades_7_0= ruleXPartGrade
+            	    // InternalXMarking.g:1095:4: (lv_subgrades_7_0= ruleXPartGrade )
+            	    // InternalXMarking.g:1096:5: lv_subgrades_7_0= ruleXPartGrade
             	    {
 
             	    					newCompositeNode(grammarAccess.getSectionGradeAccess().getSubgradesXPartGradeParserRuleCall_4_0());
@@ -2805,7 +2800,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQuestionGrade"
-    // InternalXMarking.g:1125:1: entryRuleQuestionGrade returns [EObject current=null] : iv_ruleQuestionGrade= ruleQuestionGrade EOF ;
+    // InternalXMarking.g:1121:1: entryRuleQuestionGrade returns [EObject current=null] : iv_ruleQuestionGrade= ruleQuestionGrade EOF ;
     public final EObject entryRuleQuestionGrade() throws RecognitionException {
         EObject current = null;
 
@@ -2813,8 +2808,8 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalXMarking.g:1125:54: (iv_ruleQuestionGrade= ruleQuestionGrade EOF )
-            // InternalXMarking.g:1126:2: iv_ruleQuestionGrade= ruleQuestionGrade EOF
+            // InternalXMarking.g:1121:54: (iv_ruleQuestionGrade= ruleQuestionGrade EOF )
+            // InternalXMarking.g:1122:2: iv_ruleQuestionGrade= ruleQuestionGrade EOF
             {
              newCompositeNode(grammarAccess.getQuestionGradeRule()); 
             pushFollow(FOLLOW_1);
@@ -2841,7 +2836,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQuestionGrade"
-    // InternalXMarking.g:1132:1: ruleQuestionGrade returns [EObject current=null] : ( ( ( ruleEString ) ) ( (lv_mark_1_0= ruleEInt ) ) (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )? ) ;
+    // InternalXMarking.g:1128:1: ruleQuestionGrade returns [EObject current=null] : ( ( ( ruleEString ) ) ( (lv_mark_1_0= ruleEInt ) ) (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )? ) ;
     public final EObject ruleQuestionGrade() throws RecognitionException {
         EObject current = null;
 
@@ -2855,17 +2850,17 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalXMarking.g:1138:2: ( ( ( ( ruleEString ) ) ( (lv_mark_1_0= ruleEInt ) ) (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )? ) )
-            // InternalXMarking.g:1139:2: ( ( ( ruleEString ) ) ( (lv_mark_1_0= ruleEInt ) ) (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )? )
+            // InternalXMarking.g:1134:2: ( ( ( ( ruleEString ) ) ( (lv_mark_1_0= ruleEInt ) ) (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )? ) )
+            // InternalXMarking.g:1135:2: ( ( ( ruleEString ) ) ( (lv_mark_1_0= ruleEInt ) ) (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )? )
             {
-            // InternalXMarking.g:1139:2: ( ( ( ruleEString ) ) ( (lv_mark_1_0= ruleEInt ) ) (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )? )
-            // InternalXMarking.g:1140:3: ( ( ruleEString ) ) ( (lv_mark_1_0= ruleEInt ) ) (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )?
+            // InternalXMarking.g:1135:2: ( ( ( ruleEString ) ) ( (lv_mark_1_0= ruleEInt ) ) (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )? )
+            // InternalXMarking.g:1136:3: ( ( ruleEString ) ) ( (lv_mark_1_0= ruleEInt ) ) (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )?
             {
-            // InternalXMarking.g:1140:3: ( ( ruleEString ) )
-            // InternalXMarking.g:1141:4: ( ruleEString )
+            // InternalXMarking.g:1136:3: ( ( ruleEString ) )
+            // InternalXMarking.g:1137:4: ( ruleEString )
             {
-            // InternalXMarking.g:1141:4: ( ruleEString )
-            // InternalXMarking.g:1142:5: ruleEString
+            // InternalXMarking.g:1137:4: ( ruleEString )
+            // InternalXMarking.g:1138:5: ruleEString
             {
 
             					if (current==null) {
@@ -2889,11 +2884,11 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXMarking.g:1156:3: ( (lv_mark_1_0= ruleEInt ) )
-            // InternalXMarking.g:1157:4: (lv_mark_1_0= ruleEInt )
+            // InternalXMarking.g:1152:3: ( (lv_mark_1_0= ruleEInt ) )
+            // InternalXMarking.g:1153:4: (lv_mark_1_0= ruleEInt )
             {
-            // InternalXMarking.g:1157:4: (lv_mark_1_0= ruleEInt )
-            // InternalXMarking.g:1158:5: lv_mark_1_0= ruleEInt
+            // InternalXMarking.g:1153:4: (lv_mark_1_0= ruleEInt )
+            // InternalXMarking.g:1154:5: lv_mark_1_0= ruleEInt
             {
 
             					newCompositeNode(grammarAccess.getQuestionGradeAccess().getMarkEIntParserRuleCall_1_0());
@@ -2920,7 +2915,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXMarking.g:1175:3: (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )?
+            // InternalXMarking.g:1171:3: (otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )?
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -2929,17 +2924,17 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
             }
             switch (alt25) {
                 case 1 :
-                    // InternalXMarking.g:1176:4: otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')'
+                    // InternalXMarking.g:1172:4: otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')'
                     {
                     otherlv_2=(Token)match(input,17,FOLLOW_3); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getQuestionGradeAccess().getLeftParenthesisKeyword_2_0());
                     			
-                    // InternalXMarking.g:1180:4: ( ( ruleEString ) )
-                    // InternalXMarking.g:1181:5: ( ruleEString )
+                    // InternalXMarking.g:1176:4: ( ( ruleEString ) )
+                    // InternalXMarking.g:1177:5: ( ruleEString )
                     {
-                    // InternalXMarking.g:1181:5: ( ruleEString )
-                    // InternalXMarking.g:1182:6: ruleEString
+                    // InternalXMarking.g:1177:5: ( ruleEString )
+                    // InternalXMarking.g:1178:6: ruleEString
                     {
 
                     						if (current==null) {
@@ -2963,7 +2958,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalXMarking.g:1196:4: (otherlv_4= ',' ( ( ruleEString ) ) )*
+                    // InternalXMarking.g:1192:4: (otherlv_4= ',' ( ( ruleEString ) ) )*
                     loop24:
                     do {
                         int alt24=2;
@@ -2976,17 +2971,17 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
                         switch (alt24) {
                     	case 1 :
-                    	    // InternalXMarking.g:1197:5: otherlv_4= ',' ( ( ruleEString ) )
+                    	    // InternalXMarking.g:1193:5: otherlv_4= ',' ( ( ruleEString ) )
                     	    {
                     	    otherlv_4=(Token)match(input,32,FOLLOW_3); 
 
                     	    					newLeafNode(otherlv_4, grammarAccess.getQuestionGradeAccess().getCommaKeyword_2_2_0());
                     	    				
-                    	    // InternalXMarking.g:1201:5: ( ( ruleEString ) )
-                    	    // InternalXMarking.g:1202:6: ( ruleEString )
+                    	    // InternalXMarking.g:1197:5: ( ( ruleEString ) )
+                    	    // InternalXMarking.g:1198:6: ( ruleEString )
                     	    {
-                    	    // InternalXMarking.g:1202:6: ( ruleEString )
-                    	    // InternalXMarking.g:1203:7: ruleEString
+                    	    // InternalXMarking.g:1198:6: ( ruleEString )
+                    	    // InternalXMarking.g:1199:7: ruleEString
                     	    {
 
                     	    							if (current==null) {
@@ -3052,7 +3047,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEInt"
-    // InternalXMarking.g:1227:1: entryRuleEInt returns [String current=null] : iv_ruleEInt= ruleEInt EOF ;
+    // InternalXMarking.g:1223:1: entryRuleEInt returns [String current=null] : iv_ruleEInt= ruleEInt EOF ;
     public final String entryRuleEInt() throws RecognitionException {
         String current = null;
 
@@ -3060,8 +3055,8 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalXMarking.g:1227:44: (iv_ruleEInt= ruleEInt EOF )
-            // InternalXMarking.g:1228:2: iv_ruleEInt= ruleEInt EOF
+            // InternalXMarking.g:1223:44: (iv_ruleEInt= ruleEInt EOF )
+            // InternalXMarking.g:1224:2: iv_ruleEInt= ruleEInt EOF
             {
              newCompositeNode(grammarAccess.getEIntRule()); 
             pushFollow(FOLLOW_1);
@@ -3088,7 +3083,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEInt"
-    // InternalXMarking.g:1234:1: ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_INT_1= RULE_INT ) ;
+    // InternalXMarking.g:1230:1: ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_INT_1= RULE_INT ) ;
     public final AntlrDatatypeRuleToken ruleEInt() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3099,13 +3094,13 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalXMarking.g:1240:2: ( ( (kw= '-' )? this_INT_1= RULE_INT ) )
-            // InternalXMarking.g:1241:2: ( (kw= '-' )? this_INT_1= RULE_INT )
+            // InternalXMarking.g:1236:2: ( ( (kw= '-' )? this_INT_1= RULE_INT ) )
+            // InternalXMarking.g:1237:2: ( (kw= '-' )? this_INT_1= RULE_INT )
             {
-            // InternalXMarking.g:1241:2: ( (kw= '-' )? this_INT_1= RULE_INT )
-            // InternalXMarking.g:1242:3: (kw= '-' )? this_INT_1= RULE_INT
+            // InternalXMarking.g:1237:2: ( (kw= '-' )? this_INT_1= RULE_INT )
+            // InternalXMarking.g:1238:3: (kw= '-' )? this_INT_1= RULE_INT
             {
-            // InternalXMarking.g:1242:3: (kw= '-' )?
+            // InternalXMarking.g:1238:3: (kw= '-' )?
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -3114,7 +3109,7 @@ public class InternalXMarkingParser extends AbstractInternalAntlrParser {
             }
             switch (alt26) {
                 case 1 :
-                    // InternalXMarking.g:1243:4: kw= '-'
+                    // InternalXMarking.g:1239:4: kw= '-'
                     {
                     kw=(Token)match(input,33,FOLLOW_17); 
 

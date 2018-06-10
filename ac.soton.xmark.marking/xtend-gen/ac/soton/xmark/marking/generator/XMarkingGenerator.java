@@ -36,7 +36,7 @@ public class XMarkingGenerator extends AbstractGenerator {
     String _plus = (_name + ".fbk");
     fsa.generateFile(_plus, this.feedback(exercise));
     String _name_1 = exercise.getName();
-    String _plus_1 = (_name_1 + ".grd");
+    String _plus_1 = (_name_1 + ".csv");
     fsa.generateFile(_plus_1, this.grade(exercise));
   }
   

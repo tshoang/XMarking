@@ -530,20 +530,19 @@ public class XMarkingGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRecipientAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cRecipientRecipientCrossReference_1_0 = (CrossReference)cRecipientAssignment_1.eContents().get(0);
 		private final RuleCall cRecipientRecipientIDTerminalRuleCall_1_0_1 = (RuleCall)cRecipientRecipientCrossReference_1_0.eContents().get(1);
-		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cBeginKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cBeginKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cGradeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cGradeXPartGradeParserRuleCall_3_0 = (RuleCall)cGradeAssignment_3.eContents().get(0);
 		private final Assignment cGradeAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cGradeXPartGradeParserRuleCall_4_0 = (RuleCall)cGradeAssignment_4.eContents().get(0);
-		private final Assignment cGradeAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cGradeXPartGradeParserRuleCall_5_0 = (RuleCall)cGradeAssignment_5.eContents().get(0);
-		private final Keyword cEndKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cEndKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//XMark Mark:
-		//	{Mark} recipient=[Recipient] ':'
+		//	{Mark} recipient=[Recipient]
 		//	'begin' grade+=XPartGrade grade+=XPartGrade* 'end';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Mark} recipient=[Recipient] ':' 'begin' grade+=XPartGrade grade+=XPartGrade* 'end'
+		//{Mark} recipient=[Recipient] 'begin' grade+=XPartGrade grade+=XPartGrade* 'end'
 		public Group getGroup() { return cGroup; }
 		
 		//{Mark}
@@ -558,26 +557,23 @@ public class XMarkingGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getRecipientRecipientIDTerminalRuleCall_1_0_1() { return cRecipientRecipientIDTerminalRuleCall_1_0_1; }
 		
-		//':'
-		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
-		
 		//'begin'
-		public Keyword getBeginKeyword_3() { return cBeginKeyword_3; }
+		public Keyword getBeginKeyword_2() { return cBeginKeyword_2; }
 		
 		//grade+=XPartGrade
+		public Assignment getGradeAssignment_3() { return cGradeAssignment_3; }
+		
+		//XPartGrade
+		public RuleCall getGradeXPartGradeParserRuleCall_3_0() { return cGradeXPartGradeParserRuleCall_3_0; }
+		
+		//grade+=XPartGrade*
 		public Assignment getGradeAssignment_4() { return cGradeAssignment_4; }
 		
 		//XPartGrade
 		public RuleCall getGradeXPartGradeParserRuleCall_4_0() { return cGradeXPartGradeParserRuleCall_4_0; }
 		
-		//grade+=XPartGrade*
-		public Assignment getGradeAssignment_5() { return cGradeAssignment_5; }
-		
-		//XPartGrade
-		public RuleCall getGradeXPartGradeParserRuleCall_5_0() { return cGradeXPartGradeParserRuleCall_5_0; }
-		
 		//'end'
-		public Keyword getEndKeyword_6() { return cEndKeyword_6; }
+		public Keyword getEndKeyword_5() { return cEndKeyword_5; }
 	}
 	public class SectionGradeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xmark.marking.XMarking.SectionGrade");
@@ -927,7 +923,7 @@ public class XMarkingGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XMark Mark:
-	//	{Mark} recipient=[Recipient] ':'
+	//	{Mark} recipient=[Recipient]
 	//	'begin' grade+=XPartGrade grade+=XPartGrade* 'end';
 	public XMarkElements getXMarkAccess() {
 		return pXMark;

@@ -945,14 +945,29 @@ ruleXMark returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2=':'
+		otherlv_2='begin'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getXMarkAccess().getColonKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getXMarkAccess().getBeginKeyword_2());
 		}
-		otherlv_3='begin'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getXMarkAccess().getBeginKeyword_3());
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_3_0());
+				}
+				lv_grade_3_0=ruleXPartGrade
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getXMarkRule());
+					}
+					add(
+						$current,
+						"grade",
+						lv_grade_3_0,
+						"ac.soton.xmark.marking.XMarking.XPartGrade");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 		(
 			(
 				{
@@ -971,29 +986,10 @@ ruleXMark returns [EObject current=null]
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getXMarkAccess().getGradeXPartGradeParserRuleCall_5_0());
-				}
-				lv_grade_5_0=ruleXPartGrade
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getXMarkRule());
-					}
-					add(
-						$current,
-						"grade",
-						lv_grade_5_0,
-						"ac.soton.xmark.marking.XMarking.XPartGrade");
-					afterParserOrEnumRuleCall();
-				}
-			)
 		)*
-		otherlv_6='end'
+		otherlv_5='end'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getXMarkAccess().getEndKeyword_6());
+			newLeafNode(otherlv_5, grammarAccess.getXMarkAccess().getEndKeyword_5());
 		}
 	)
 ;
