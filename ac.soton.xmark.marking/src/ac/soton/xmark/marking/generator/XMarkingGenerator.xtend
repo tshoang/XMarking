@@ -24,10 +24,13 @@ class XMarkingGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var exercise = resource.contents.get(0) as Exercise
-		fsa.generateFile(exercise.name + ".fbk", exercise.contents)
+		
+		fsa.generateFile(exercise.name + ".fbk", exercise.feedback)
+		
+		fsa.generateFile(exercise.name + ".grd", exercise.grade)
 	}
 		
-	def private getContents(Exercise exercise) 
+	def private feedback(Exercise exercise) 
 	'''«
 	»Feedback «exercise.name»
 «	FOR mark : exercise.marks»
@@ -57,7 +60,7 @@ class XMarkingGenerator extends AbstractGenerator {
 
 	def private title(Exercise exercise)
 	'''"«exercise.module» «exercise.name» Feedback"'''
-	
+		
 	def private feedback(Mark mark, Exercise exercise)
 	'''
 «	»"
@@ -67,11 +70,34 @@ class XMarkingGenerator extends AbstractGenerator {
 «	FOR grade : mark.grade»
 «		grade.feedback»
 «	ENDFOR»
+«	» Total «mark.calculateGrade»/100
 «	» --
 «	»Best regards,
 «	»
 «	»"
 	'''
+
+	def private int calculateGrade(Mark mark) {
+		var int calGrade = 0
+		
+		for (grade : mark.grade) {
+			calGrade += grade.calculateGrade
+		}
+		
+		return calGrade;
+	}	
+
+	def private int calculateGrade(PartGrade grade) {
+		if (grade instanceof QuestionGrade) {
+			return grade.mark
+		}
+		val sectGrade = grade as SectionGrade
+		var calGrade = 0
+		for (partGrade : sectGrade.subgrades) {
+			calGrade += partGrade.calculateGrade
+		}
+		return calGrade;
+	}
 
 	def private recipients(Mark mark)
 	'''«
@@ -83,7 +109,7 @@ class XMarkingGenerator extends AbstractGenerator {
 			ENDFOR»«
 		ELSE»«
 			val student = recipient as Student»«
-			student.firstname»«
+			student.firstname»,«
 		ENDIF»
 	'''
 
@@ -107,5 +133,17 @@ class XMarkingGenerator extends AbstractGenerator {
 		«ENDFOR»								
 	«ENDIF»
 	'''
+
+	def private grade(Exercise exercise) 
+	'''«
+	FOR mark : exercise.marks»
+«		mark.recipient.name» {
+«		»	recipients «mark.recipients(exercise)»
+«		»	title «exercise.title»
+«		»	feedback «mark.feedback(exercise)»
+«		»}
+«	ENDFOR»«
+	»end«
+	»'''
 
 }

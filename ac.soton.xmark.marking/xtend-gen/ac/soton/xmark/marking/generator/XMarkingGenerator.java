@@ -34,10 +34,13 @@ public class XMarkingGenerator extends AbstractGenerator {
     Exercise exercise = ((Exercise) _get);
     String _name = exercise.getName();
     String _plus = (_name + ".fbk");
-    fsa.generateFile(_plus, this.getContents(exercise));
+    fsa.generateFile(_plus, this.feedback(exercise));
+    String _name_1 = exercise.getName();
+    String _plus_1 = (_name_1 + ".grd");
+    fsa.generateFile(_plus_1, this.grade(exercise));
   }
   
-  private CharSequence getContents(final Exercise exercise) {
+  private CharSequence feedback(final Exercise exercise) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feedback ");
     String _name = exercise.getName();
@@ -152,6 +155,12 @@ public class XMarkingGenerator extends AbstractGenerator {
       }
     }
     _builder.append(" ");
+    _builder.append("Total ");
+    int _calculateGrade = this.calculateGrade(mark);
+    _builder.append(_calculateGrade, " ");
+    _builder.append("/100");
+    _builder.newLineIfNotEmpty();
+    _builder.append(" ");
     _builder.append("--");
     _builder.newLine();
     _builder.append("Best regards,");
@@ -160,6 +169,32 @@ public class XMarkingGenerator extends AbstractGenerator {
     _builder.append("\"");
     _builder.newLine();
     return _builder;
+  }
+  
+  private int calculateGrade(final Mark mark) {
+    int calGrade = 0;
+    EList<PartGrade> _grade = mark.getGrade();
+    for (final PartGrade grade : _grade) {
+      int _calGrade = calGrade;
+      int _calculateGrade = this.calculateGrade(grade);
+      calGrade = (_calGrade + _calculateGrade);
+    }
+    return calGrade;
+  }
+  
+  private int calculateGrade(final PartGrade grade) {
+    if ((grade instanceof QuestionGrade)) {
+      return ((QuestionGrade)grade).getMark();
+    }
+    final SectionGrade sectGrade = ((SectionGrade) grade);
+    int calGrade = 0;
+    EList<PartGrade> _subgrades = sectGrade.getSubgrades();
+    for (final PartGrade partGrade : _subgrades) {
+      int _calGrade = calGrade;
+      int _calculateGrade = this.calculateGrade(partGrade);
+      calGrade = (_calGrade + _calculateGrade);
+    }
+    return calGrade;
   }
   
   private CharSequence recipients(final Mark mark) {
@@ -180,6 +215,7 @@ public class XMarkingGenerator extends AbstractGenerator {
         final Student student_1 = ((Student) recipient);
         String _firstname_1 = student_1.getFirstname();
         _builder.append(_firstname_1);
+        _builder.append(",");
       }
     }
     _builder.newLineIfNotEmpty();
@@ -242,5 +278,38 @@ public class XMarkingGenerator extends AbstractGenerator {
       }
     }
     return _builder.toString();
+  }
+  
+  private CharSequence grade(final Exercise exercise) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EList<Mark> _marks = exercise.getMarks();
+      for(final Mark mark : _marks) {
+        _builder.newLineIfNotEmpty();
+        String _name = mark.getRecipient().getName();
+        _builder.append(_name);
+        _builder.append(" {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("recipients ");
+        CharSequence _recipients = this.recipients(mark, exercise);
+        _builder.append(_recipients, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("title ");
+        CharSequence _title = this.title(exercise);
+        _builder.append(_title, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("feedback ");
+        CharSequence _feedback = this.feedback(mark, exercise);
+        _builder.append(_feedback, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
+    _builder.append("end");
+    return _builder;
   }
 }
