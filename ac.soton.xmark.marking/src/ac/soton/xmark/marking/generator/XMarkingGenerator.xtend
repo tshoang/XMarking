@@ -134,16 +134,47 @@ class XMarkingGenerator extends AbstractGenerator {
 	«ENDIF»
 	'''
 
-	def private grade(Exercise exercise) 
+	def private grade(Exercise exercise)
 	'''«
-	FOR mark : exercise.marks»
-«		mark.recipient.name» {
-«		»	recipients «mark.recipients(exercise)»
-«		»	title «exercise.title»
-«		»	feedback «mark.feedback(exercise)»
-«		»}
-«	ENDFOR»«
-	»end«
+	FOR student : exercise.students»
+«		student.grade(exercise)»«
+	ENDFOR»«
 	»'''
 
+	/**
+	 * The algorithm is certainly not optimal at the moment
+	 */
+	def private grade(Student student, Exercise exercise)
+	'''«student.name»,«
+	FOR mark : exercise.marks»«
+		IF mark.recipient instanceof Student»«
+			IF student === mark.recipient»«
+				mark.printGrades»«
+			ENDIF»«
+		ELSE»«
+			val group = mark.recipient as Group»«
+			IF group.students.contains(student)»«
+				mark.printGrades»«
+			ENDIF»«
+		ENDIF»«
+	ENDFOR
+	»'''
+	
+	def private printGrades(Mark mark)
+	'''«
+	FOR grade : mark.grade»«
+		printGrade(grade)»«
+	ENDFOR
+	»'''
+
+	def private String printGrade(PartGrade grade)
+	'''«
+	IF grade instanceof QuestionGrade»«
+		grade.mark»,«
+	ELSE»«
+		val sectGrade = grade as SectionGrade»«
+		FOR subGrade : sectGrade.subgrades»«
+			printGrade(subGrade)»«
+		ENDFOR»«
+	ENDIF»'''
 }

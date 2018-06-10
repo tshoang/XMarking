@@ -283,33 +283,85 @@ public class XMarkingGenerator extends AbstractGenerator {
   private CharSequence grade(final Exercise exercise) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      EList<Mark> _marks = exercise.getMarks();
-      for(final Mark mark : _marks) {
+      EList<Student> _students = exercise.getStudents();
+      for(final Student student : _students) {
         _builder.newLineIfNotEmpty();
-        String _name = mark.getRecipient().getName();
-        _builder.append(_name);
-        _builder.append(" {");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("recipients ");
-        CharSequence _recipients = this.recipients(mark, exercise);
-        _builder.append(_recipients, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("title ");
-        CharSequence _title = this.title(exercise);
-        _builder.append(_title, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("feedback ");
-        CharSequence _feedback = this.feedback(mark, exercise);
-        _builder.append(_feedback, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("}");
-        _builder.newLine();
+        CharSequence _grade = this.grade(student, exercise);
+        _builder.append(_grade);
       }
     }
-    _builder.append("end");
     return _builder;
+  }
+  
+  /**
+   * The algorithm is certainly not optimal at the moment
+   */
+  private CharSequence grade(final Student student, final Exercise exercise) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = student.getName();
+    _builder.append(_name);
+    _builder.append(",");
+    {
+      EList<Mark> _marks = exercise.getMarks();
+      for(final Mark mark : _marks) {
+        {
+          Recipient _recipient = mark.getRecipient();
+          if ((_recipient instanceof Student)) {
+            {
+              Recipient _recipient_1 = mark.getRecipient();
+              boolean _tripleEquals = (student == _recipient_1);
+              if (_tripleEquals) {
+                CharSequence _printGrades = this.printGrades(mark);
+                _builder.append(_printGrades);
+              }
+            }
+          } else {
+            Recipient _recipient_2 = mark.getRecipient();
+            final Group group = ((Group) _recipient_2);
+            {
+              boolean _contains = group.getStudents().contains(student);
+              if (_contains) {
+                CharSequence _printGrades_1 = this.printGrades(mark);
+                _builder.append(_printGrades_1);
+              }
+            }
+          }
+        }
+      }
+    }
+    return _builder;
+  }
+  
+  private CharSequence printGrades(final Mark mark) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EList<PartGrade> _grade = mark.getGrade();
+      for(final PartGrade grade : _grade) {
+        String _printGrade = this.printGrade(grade);
+        _builder.append(_printGrade);
+      }
+    }
+    return _builder;
+  }
+  
+  private String printGrade(final PartGrade grade) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if ((grade instanceof QuestionGrade)) {
+        int _mark = ((QuestionGrade)grade).getMark();
+        _builder.append(_mark);
+        _builder.append(",");
+      } else {
+        final SectionGrade sectGrade = ((SectionGrade) grade);
+        {
+          EList<PartGrade> _subgrades = sectGrade.getSubgrades();
+          for(final PartGrade subGrade : _subgrades) {
+            String _printGrade = this.printGrade(subGrade);
+            _builder.append(_printGrade);
+          }
+        }
+      }
+    }
+    return _builder.toString();
   }
 }
